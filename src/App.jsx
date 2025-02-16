@@ -51,19 +51,13 @@ function App() {
     setTasks(newTasks);
   }
 
-  function onAddTaskSubmit(title, description) {
-    const formatedDate = (data) =>
-      [
-        data.getDate().toString().padStart(2, "0"),
-        (data.getMonth() + 1).toString().padStart(2, "0"),
-        data.getFullYear(),
-      ].join("/");
-    const createDate = formatedDate(new Date());
+  function onAddTaskSubmit(title, description, dueDate, createdAt) {
     const newTask = {
       id: v4(),
       text: description,
       title: title,
-      day: createDate,
+      dueDate: dueDate,
+      createdAt: createdAt,
       isCompleted: false,
     };
     setTasks([...tasks, newTask]);
